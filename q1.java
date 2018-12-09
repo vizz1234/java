@@ -40,12 +40,20 @@ public class q1 extends HttpServlet {
 		if(p1.equals(p2) )
 		{
 			if(s.charAt(12)<'3') {
+				//pw.println(s.charAt(12));
 				pw.println("<h3> Good Morning </h3> , <h1>"+name+"</h1>");
 			}
 			else
 				pw.println("<h3> welcome </h3> , <h1>"+name+"</h1>");
 		}
-		pw.println("confirm the password correctly");
+		else
+		{	
+			pw.print("confirm the password correctly\n");
+			RequestDispatcher rd=request.getRequestDispatcher("/pwd.html");
+			
+			rd.include(request, response);
+			
+		}
 		pw.close();
 		
 	}
