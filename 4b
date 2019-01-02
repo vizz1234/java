@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form action="fourb.jsp">
+Enter username:<input type="text" name="name"><br>
+Enter password:<input type="password" name="password"><br>
+<input type="submit" name="submit">
+</form>
+
+</body>
+</html>
+
+
+
+
+
+
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+String name=request.getParameter("name");
+String password=request.getParameter("password");
+out.println(name+" "+password);
+if(name.equals("admin") && password.equals("1234"))
+{
+	session =request.getSession(true);
+	if(session.isNew())
+	{
+		session.setAttribute("username",name);
+		out.println("welcome to my website "+name);
+	}
+	
+	else
+	{
+		out.println("welcome back to my website "+name);
+	}
+	}
+else
+{
+	out.println("invalid username and password");
+	
+}
+%>
+
+</body>
+</html>
